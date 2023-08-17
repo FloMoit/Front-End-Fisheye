@@ -1,16 +1,17 @@
 async function getPhotographers() {
-  // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
-  // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
   let photographers = [];
 
-  await fetch("./data/photographers.json")
+  await fetch(
+    "https://raw.githubusercontent.com/FloMoit/Front-End-Fisheye/main/data/photographers.json"
+  )
     .then((response) => response.json())
-    .then((json) => (photographers = json.photographers));
+    .then((json) => {
+      console.log(json.photographers);
+      photographers = json.photographers;
+    });
 
   // et bien retourner le tableau photographers seulement une fois récupéré
-  return {
-    photographers: [...photographers, ...photographers, ...photographers],
-  };
+  return photographers;
 }
 
 async function displayData(photographers) {
@@ -25,7 +26,7 @@ async function displayData(photographers) {
 
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
+  const photographers = await getPhotographers();
   displayData(photographers);
 }
 
