@@ -10,7 +10,6 @@ async function getPhotographers() {
       photographers = json.photographers;
     });
 
-  // et bien retourner le tableau photographers seulement une fois récupéré
   return photographers;
 }
 
