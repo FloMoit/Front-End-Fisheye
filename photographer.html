@@ -15,18 +15,18 @@
         ><img src="assets/images/logo.png" class="logo"
       /></a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <div class="author-description">
-          <h1></h1>
-          <p class="location"></p>
-          <p class="tagline"></p>
-        </div>
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
+    <main id="main"></main>
+    <section class="medias">
+      <div class="sorter">
+        <label id="sort-label">Trier par</label>
+        <select id="sort">
+          <option value="popularite">Popularité</option>
+          <option value="date">Date</option>
+          <option value="titre">Titre</option>
+        </select>
       </div>
-    </main>
+      <div class="medias_container"></div>
+    </section>
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -42,6 +42,8 @@
         </form>
       </div>
     </div>
+    <script src="scripts/templates/photographer.js"></script>
+    <script src="scripts/templates/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

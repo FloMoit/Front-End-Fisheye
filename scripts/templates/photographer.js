@@ -39,5 +39,47 @@ function photographerTemplate(data) {
     return article;
   }
 
-  return { name, picture, getUserCardDOM, data };
+  function getUserHeaderDOM() {
+    const header = document.createElement("div");
+    header.setAttribute("class", "photograph-header");
+
+    const photographDescription = document.createElement("div");
+    photographDescription.setAttribute("class", "photograph-description");
+
+    const h1 = document.createElement("h1");
+    h1.textContent = name;
+    photographDescription.appendChild(h1);
+
+    const h2 = document.createElement("h2");
+    h2.textContent = city + ", " + country;
+    photographDescription.appendChild(h2);
+
+    const quoteTagline = document.createElement("span");
+    quoteTagline.textContent = tagline;
+    quoteTagline.setAttribute("class", "quote-tagline");
+    photographDescription.appendChild(quoteTagline);
+
+    header.appendChild(photographDescription);
+
+    const contactButton = document.createElement("button");
+    contactButton.setAttribute("class", "contact-button");
+    contactButton.setAttribute("aria-label", "Contactez-moi");
+    contactButton.textContent = "Contactez-moi";
+    contactButton.setAttribute("onclick", "displayModal()");
+
+    header.appendChild(contactButton);
+
+    const imgZoom = document.createElement("div");
+    imgZoom.setAttribute("class", "img-zoom");
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    img.setAttribute("alt", name);
+    imgZoom.appendChild(img);
+
+    header.appendChild(imgZoom);
+
+    return header;
+  }
+
+  return { name, picture, getUserCardDOM, getUserHeaderDOM };
 }
