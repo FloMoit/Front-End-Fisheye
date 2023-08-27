@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -12,13 +12,13 @@
   <body>
     <header>
       <a href="/index.html"
-        ><img src="assets/images/logo.png" class="logo"
+        ><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"
       /></a>
     </header>
     <main id="main"></main>
     <section class="medias">
       <div class="sorter">
-        <label id="sort-label">Trier par</label>
+        <label id="sort-label" for="sort">Trier par</label>
         <select id="sort" onchange="displayPhotographMedias()">
           <option value="popularite">Popularité</option>
           <option value="date">Date</option>
@@ -33,21 +33,37 @@
         <img
           class="close-modal"
           src="assets/icons/close-color.svg"
-          onclick="closeCarousel()" />
+          onclick="closeCarousel()"
+          alt="Fermer le carousel" />
         <div class="carousel">
-          <img src="assets/icons/arrow-left.svg" onclick="previousMedia()" />
-          <div class="carousel-medias-container"></div>
-          <img src="assets/icons/arrow-right.svg" onclick="nextMedia()" />
+          <img
+            src="assets/icons/arrow-left.svg"
+            onclick="previousMedia()"
+            alt="Média précédent" />
+          <div
+            class="carousel-medias-container"
+            aria-label="Gros plan sur les médias"></div>
+          <img
+            src="assets/icons/arrow-right.svg"
+            onclick="nextMedia()"
+            alt="Média suivant" />
         </div>
       </div>
     </div>
 
-    <div id="contact_modal" role="dialog" aria-hidden="true">
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-hidden="true"
+      aria-describedby="contact_title">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
+          <h2 id="contact_title">Contactez-moi</h2>
           <h3 id="contact_name"></h3>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+            alt="Fermer le formulaire" />
         </header>
         <form id="contact_form">
           <div>

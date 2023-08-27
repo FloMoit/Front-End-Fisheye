@@ -8,6 +8,7 @@ function displayCarousel(id) {
     ".media-carousel[data-id='" + id + "']"
   );
   currentMedia.style.display = "flex";
+  currentMedia.setAttribute("aria-hidden", "false");
 
   const body = document.querySelector("body");
   body.style.position = "fixed";
@@ -57,12 +58,17 @@ function nextMedia() {
   if (nextMedia != null) {
     currentMedia.style.display = "none";
     nextMedia.style.display = "flex";
+    currentMedia.setAttribute("aria-hidden", "true");
+    nextMedia.setAttribute("aria-hidden", "false");
+
     currentMedia = nextMedia;
   } else {
     // Si on est sur la dernière image
     const firstMedia = document.querySelector(".media-carousel");
     currentMedia.style.display = "none";
     firstMedia.style.display = "flex";
+    currentMedia.setAttribute("aria-hidden", "true");
+    firstMedia.setAttribute("aria-hidden", "false");
     currentMedia = firstMedia;
   }
 }
@@ -72,12 +78,16 @@ function previousMedia() {
   if (previousMedia != null) {
     currentMedia.style.display = "none";
     previousMedia.style.display = "flex";
+    currentMedia.setAttribute("aria-hidden", "true");
+    previousMedia.setAttribute("aria-hidden", "false");
     currentMedia = previousMedia;
   } else {
     // Si on est sur la première image
     const lastMedia = document.querySelector(".media-carousel:last-child");
     currentMedia.style.display = "none";
     lastMedia.style.display = "flex";
+    currentMedia.setAttribute("aria-hidden", "true");
+    lastMedia.setAttribute("aria-hidden", "false");
     currentMedia = lastMedia;
   }
 }

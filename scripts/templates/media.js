@@ -65,6 +65,7 @@ function mediaTemplate(data) {
     const article = document.createElement("article");
     article.setAttribute("class", "media-carousel");
     article.setAttribute("data-id", id);
+    article.setAttribute("aria-hidden", "true");
 
     const imgZoom = document.createElement("div");
     imgZoom.setAttribute("class", "img-zoom");
