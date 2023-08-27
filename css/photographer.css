@@ -1,3 +1,95 @@
+/* Reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  background: #901c1c;
+  border-radius: 5px;
+  color: #fafafa;
+  padding: 10px;
+}
+option {
+  color: #fafafa;
+  background: #901c1c;
+  padding: 10px;
+}
+
 #contact_modal {
   display: none;
 }
@@ -80,27 +172,44 @@
   align-items: center;
   width: 100%;
   margin: 0 auto;
+  gap: 40px;
 }
 
 .medias_container .media-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%;
+  width: 25%;
 }
-.medias_container .media-card img,
-.medias_container .media-card video {
-  width: 300px;
-  height: 300px;
+
+.medias_container .media-card .img-zoom {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  cursor: pointer;
+}
+.medias_container .media-card .img-zoom:hover {
+  filter: brightness(0.8);
+}
+
+.medias_container .media-card .main-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   margin-bottom: 10px;
+
+  border-radius: 5px;
 }
 
 .medias_container article .media-infos {
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 100%;
   align-items: center;
+  padding: 10px 0;
 }
 .medias_container article .media-infos h2 {
   color: #901c1c;
@@ -110,8 +219,92 @@
   line-height: normal;
   margin: 0;
 }
+.medias_container article .media-infos .media-likes-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.medias_container article .media-infos .media-likes {
+  color: #901c1c;
+  font-family: DM Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 
-.modal {
+.medias .sorter {
+  margin: 20px 0 50px 0;
+}
+
+.medias .sorter #sort-label {
+  margin-right: 20px;
+  color: #000;
+  font-family: DM Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* Price tag */
+
+body > .price-per-day {
+  position: fixed;
+  bottom: 0;
+  right: 36px;
+  border-radius: 5px 5px 0 0;
+  background: #db8876;
+
+  display: flex;
+  align-content: center;
+  padding: 20px 30px;
+  gap: 65px;
+}
+body > .price-per-day .total-likes-wrapper {
+  display: flex;
+  align-content: center;
+  gap: 5px;
+}
+
+body > .price-per-day .total-likes-wrapper .total-likes {
+  color: #000;
+  font-family: DM Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+body > .price-per-day .total-likes-wrapper img {
+  filter: brightness(0) saturate(100%);
+}
+
+body > .price-per-day .price-wrapper {
+  color: #000;
+  font-family: DM Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* Modals */
+
+#contact_modal,
+#carousel_modal {
+  display: none;
+  position: fixed;
+  align-items: center;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#contact_modal .modal {
   border-radius: 5px;
   background-color: #db8876;
   width: 50%;
@@ -119,38 +312,55 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 35px;
+  padding: 25px;
   margin: auto;
+  position: relative;
+  gap: 20px;
 }
 
-.modal header {
-  justify-content: space-between;
+/* Contact modal */
+
+#contact_modal .modal header {
   width: 100%;
+  flex-direction: column;
+  height: auto;
+  flex-wrap: wrap;
+  align-content: start;
+  align-items: flex-start;
 }
 
-.modal header img {
+#contact_modal .modal header img {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
   cursor: pointer;
 }
 
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
+#contact_modal .modal header img {
+  cursor: pointer;
 }
 
-form {
+#contact_modal .modal header h2,
+#contact_modal .modal header h3 {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: left;
+}
+
+#contact_modal form {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
 }
 
-form label {
+#contact_modal form label {
   color: #312e2e;
   font-size: 36px;
 }
 
-form div {
+#contact_modal form div {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -158,9 +368,102 @@ form div {
   margin-bottom: 26px;
 }
 
-form input {
+#contact_modal form input {
   width: 100%;
-  height: 68px;
   border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-size: 24px;
+  box-sizing: border-box;
+}
+#contact_modal form textarea {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+#contact_modal form button.contact_button {
+  padding: 25px 50px;
+  border: none;
+  border-radius: 5px;
+  background-color: #901c1c;
+  color: #fafafa;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Carousel modal */
+
+#carousel_modal .modal {
+  border-radius: 5px;
+  background-color: white;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+  position: relative;
+}
+
+#carousel_modal .close-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#carousel_modal .carousel {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+#carousel_modal .carousel > img {
+  cursor: pointer;
+  width: 90px;
+}
+
+#carousel_modal .carousel-medias-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+#carousel_modal article {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+}
+
+#carousel_modal article .img-zoom {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+#carousel_modal article .media-infos {
+  margin-top: 10px;
+  color: #901c1c;
+  font-family: DM Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#carousel_modal article .main-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 5px;
 }

@@ -81,5 +81,38 @@ function photographerTemplate(data) {
     return header;
   }
 
-  return { name, picture, getUserCardDOM, getUserHeaderDOM };
+  function getUserPriceDOM() {
+    const pricePerDay = document.createElement("div");
+    pricePerDay.setAttribute("class", "price-per-day");
+
+    const totalLikesWrapper = document.createElement("div");
+    totalLikesWrapper.setAttribute("class", "total-likes-wrapper");
+    const totalLikes = document.createElement("span");
+    totalLikes.textContent = "0";
+    totalLikes.setAttribute("class", "total-likes");
+
+    const likeIcon = document.createElement("img");
+    likeIcon.setAttribute("src", "assets/icons/favorite.svg");
+    likeIcon.setAttribute("alt", "likes");
+
+    totalLikesWrapper.appendChild(totalLikes);
+    totalLikesWrapper.appendChild(likeIcon);
+
+    pricePerDay.appendChild(totalLikesWrapper);
+
+    const priceWrapper = document.createElement("div");
+    priceWrapper.setAttribute("class", "price-wrapper");
+
+    const pricePerDayText = document.createElement("span");
+    pricePerDayText.textContent = price + "€ / jour";
+    pricePerDayText.setAttribute("class", "price-per-day-text");
+
+    priceWrapper.appendChild(pricePerDayText);
+
+    pricePerDay.appendChild(priceWrapper);
+
+    return pricePerDay;
+  }
+
+  return { name, picture, getUserCardDOM, getUserHeaderDOM, getUserPriceDOM };
 }
