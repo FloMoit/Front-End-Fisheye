@@ -42,7 +42,7 @@ async function displayPhotographMedias() {
   medias = data.media;
 
   switch (getSortBy()) {
-    case "popularité":
+    case "popularite":
       medias.sort((a, b) => b.likes - a.likes);
       break;
     case "date":
@@ -50,6 +50,9 @@ async function displayPhotographMedias() {
       break;
     case "titre":
       medias.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    default:
+      medias.sort((a, b) => b.likes - a.likes);
       break;
   }
 
@@ -100,6 +103,23 @@ function getSortBy() {
   const sortSelect = document.getElementById("sort");
   const sortBy = sortSelect.options[sortSelect.selectedIndex].value;
   return sortBy;
+}
+
+function incrementLikes(likeIcon) {
+  const likeAmount = likeIcon.previousElementSibling;
+  const likeAmountNumber = parseInt(likeAmount.textContent);
+  const totalLikes = document.querySelector(".total-likes");
+  const totalLikesNumber = parseInt(totalLikes.textContent);
+
+  if (likeIcon.dataset.liked === "false") {
+    likeIcon.dataset.liked = "true";
+    likeAmount.textContent = likeAmountNumber + 1;
+    totalLikes.textContent = totalLikesNumber + 1;
+  } else {
+    likeIcon.dataset.liked = "false";
+    likeAmount.textContent = likeAmountNumber - 1;
+    totalLikes.textContent = totalLikesNumber - 1;
+  }
 }
 
 init();

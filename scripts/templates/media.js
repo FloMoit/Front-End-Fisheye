@@ -48,11 +48,14 @@ function mediaTemplate(data) {
     const mediaLikes = document.createElement("span");
     mediaLikes.textContent = likes;
     mediaLikes.setAttribute("class", "media-likes");
+
     mediaLikesWrapper.appendChild(mediaLikes);
 
     const likeIcon = document.createElement("img");
     likeIcon.setAttribute("src", "assets/icons/favorite.svg");
     likeIcon.setAttribute("alt", "likes");
+    likeIcon.setAttribute("data-liked", "false");
+    likeIcon.setAttribute("onclick", "incrementLikes(this)");
     mediaLikesWrapper.appendChild(likeIcon);
 
     mediaInfos.appendChild(mediaLikesWrapper);

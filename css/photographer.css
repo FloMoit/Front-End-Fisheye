@@ -225,6 +225,9 @@ option {
   align-items: center;
   gap: 5px;
 }
+.medias_container article .media-infos .media-likes-wrapper img {
+  cursor: pointer;
+}
 .medias_container article .media-infos .media-likes {
   color: #901c1c;
   font-family: DM Sans;
