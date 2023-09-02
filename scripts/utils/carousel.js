@@ -25,6 +25,7 @@ function displayCarousel(id) {
     }
   });
 
+  // Switch des attributs d'accessibilité
   const header = document.querySelector("header");
   const main = document.querySelector("main");
   header.ariaHidden = true;
